@@ -4,6 +4,7 @@ Pwntools wrapper and convenience things!
 
 
 from enum import Enum
+from logging import getLogger
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple, Union, cast
 
@@ -12,6 +13,8 @@ from pwnlib.gdb import debug
 from pwnlib.tubes.process import process
 from pwnlib.tubes.remote import remote
 from pwnlib.tubes.tube import tube
+
+l = getLogger(__file__)
 
 
 class PWMode(str, Enum):
@@ -153,18 +156,19 @@ class PW:
 
         self.elf: Optional[ELF] = None  # type: ignore
         self.libc: Optional[ELF] = None  # type: ignore
-        self.libs: Optional[Dict[str, ELF]] = None  # type: ignore
+        self.libs: Dict[str, ELF] = {}  # type: ignore
 
         if self.binary is not None and not self.binary.is_file():
             raise FileNotFoundError(f"{self.binary} is not a file")
         elif self.binary is not None:
-            self.elf = ELF(str(self.binary.resolve()))
-            self.libc = self.elf.libc
+            self.elf = ELF(str(self.binary.resolve()), checksec=False)
             self.libs = {}
 
             for lib in self.elf.libs:
                 if (lname := Path(lib).name) != self.binary.name:
-                    self.libs[lname] = ELF(lib)
+                    self.libs[lname] = ELF(lib, checksec=False)
+                    if "libc" in lname.lower():
+                        self.libc = self.libs[lname]
 
         self.addr = addr
         self.port = port
@@ -179,6 +183,8 @@ class PW:
             raise Exception("Could not open any tubes.")
         elif self.p is not None and self.r is not None:
             raise Exception("Cannot open both local and remote tubes.")
+
+        self.checksec()
 
     def open_tubes(self) -> Tuple[Optional[tube], Optional[tube]]:  # type: ignore
         """
@@ -203,13 +209,14 @@ class PW:
 
         return p, r
 
+    # Tube proxy method
+
     def __getattr__(self, name: str) -> Any:
         """
         Proxy all unknown attributes to the local tube.
-        """
-        if hasattr(self, name):
-            return getattr(self, name)
 
+        :param name: The name of the attribute to proxy.
+        """
         if self.p is not None:
             return getattr(self.p, name)
         elif self.r is not None:
@@ -218,3 +225,64 @@ class PW:
         raise AttributeError(
             f"{name} is not a valid attribute of this class or its tube!"
         )
+
+    # Convenience methods
+
+    def checksec(self) -> None:
+        """
+        Check the security of the binary.
+        """
+        for lib, elf in self.libs.items():
+            if (self.elf is not None and elf.path != self.elf.path) or self.elf is None:
+                l.info(f"Checksec info for library: {lib}")
+                for ln in elf.checksec().splitlines():
+                    l.info(ln)
+        if self.elf is not None:
+            l.info(f"Checksec info for main object: {self.elf.path}")
+            for ln in self.elf.checksec().splitlines():
+                l.info(ln)
+
+    # Printer proxy methods
+
+    def precvall(self) -> bytes:
+        """
+        Receive all data from the remote tube and print it.
+
+        :return: All data received from the remote tube.
+        """
+        b: bytes = self.recvall()
+        print(b)
+        return b
+
+    def precvline(self) -> bytes:
+        """
+        Receive a line from the remote tube and print it.
+
+        :return: A line received from the remote tube.
+        """
+        b: bytes = self.recvline()
+        print(b)
+        return b
+
+    def precv(self, numb: int) -> bytes:
+        """
+        Receive n bytes from the remote tube and print it.
+
+        :param numb: The number of bytes to receive.
+        :return: The n bytes received from the remote tube.
+        """
+        b: bytes = self.recvn(numb)
+        print(b)
+        return b
+
+    def precvuntil(self, delim: str, drop: bool = True) -> bytes:
+        """
+        Receive data from the remote tube until the delimiter is found.
+
+        :param delim: The delimiter to use.
+        :param drop: Whether to drop the delimiter.
+        :return: The data received from the remote tube.
+        """
+        b: bytes = self.recvuntil(delim, drop=drop)
+        print(b)
+        return b

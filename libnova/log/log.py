@@ -54,15 +54,7 @@ LOGGING_CONFIG = LoggingConfig()
 
 
 def __record_factory__(
-    name: str,
-    level: int,
-    fn: str,
-    lno: int,
-    msg: str,
-    args: List[Any],
-    exc_info: Optional[Tuple[Exception]],
-    func: str,
-    sinfo: str,
+    *args: List[Any],
     **kwargs: Dict[str, Any],
 ) -> LogRecord:
     """
@@ -73,18 +65,7 @@ def __record_factory__(
     :return: The new record
     :rtype: LogRecord
     """
-    record = LOGGING_CONFIG.factory(
-        name,
-        level,
-        fn,
-        lno,
-        msg,
-        args,
-        exc_info,
-        func,
-        sinfo,
-        kwargs,
-    )
+    record = LOGGING_CONFIG.factory(*args, **kwargs)  # type: ignore
     if len(record.name) > LOGGING_CONFIG.max_name_len + len(
         LOGGING_CONFIG.sname_intersp
     ):
