@@ -1,11 +1,15 @@
 [tool.poetry]
 name = "libnova"
 version = "0.1.0"
-description = ""
-authors = ["novafacing <novafacing@shemhazi>"]
+description = "Personal python batteries libary -- mostly binary analysis, exploitation."
+authors = ["novafacing <rowanbhart@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/novafacing/libnova.git"
 
 [tool.poetry.dependencies]
 python = "3.8.10"
+coloredlogs = "^15.0.1"
+pwntools = "^4.7.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.11b"
@@ -74,5 +78,3 @@ strict_equality = true
 profile = "black"
 multi_line_output = 3
 use_parentheses = true
-
-
