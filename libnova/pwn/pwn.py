@@ -238,7 +238,7 @@ class PW:
                 for ln in elf.checksec().splitlines():
                     l.info(ln)
         if self.elf is not None:
-            l.info(f"Checksec info for main object: {self.elf.path}")
+            l.info(f"Checksec info for main object: {Path(self.elf.path).name}")
             for ln in self.elf.checksec().splitlines():
                 l.info(ln)
 
