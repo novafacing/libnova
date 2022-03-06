@@ -10,6 +10,7 @@ from typing import Any, Dict, Optional, Tuple, Union, cast
 
 from pwnlib.elf.elf import ELF
 from pwnlib.gdb import debug
+from pwnlib.timeout import Timeout
 from pwnlib.tubes.process import process
 from pwnlib.tubes.remote import remote
 from pwnlib.tubes.tube import tube
@@ -285,4 +286,54 @@ class PW:
         """
         b: bytes = self.recvuntil(delim, drop=drop)
         print(b)
+        return b
+
+    # Short name aliases
+
+    def sla(self, delim: bytes, data: bytes) -> None:
+        """
+        Send data to the remote tube and receive until the delimiter is found.
+
+        :param delim: The delimiter to use.
+        :param data: The data to send.
+        :param timeout: The timeout to use.
+        """
+        self.sendlineafter(delim, data)
+
+    def sl(self, data: bytes) -> None:
+        """
+        Send data to the remote tube.
+
+        :param data: The data to send.
+        """
+        self.sendline(data)
+
+    def rcv(self, numb: int) -> bytes:
+        """
+        Receive n bytes from the remote tube.
+
+        :param numb: The number of bytes to receive.
+        :return: The n bytes received from the remote tube.
+        """
+        b: bytes = self.recv(numb)
+        return b
+
+    def rcvu(self, delim: str, drop: bool = True) -> bytes:
+        """
+        Receive data from the remote tube until the delimiter is found.
+
+        :param delim: The delimiter to use.
+        :param drop: Whether to drop the delimiter.
+        :return: The data received from the remote tube.
+        """
+        b: bytes = self.recvuntil(delim, drop=drop)
+        return b
+
+    def rcva(self) -> bytes:
+        """
+        Receive all data from the remote tube.
+
+        :return: All data received from the remote tube.
+        """
+        b: bytes = self.recvall()
         return b

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "libnova"
-version = "0.1.11"
+version = "0.1.14"
 description = "Personal python batteries libary -- mostly binary analysis, exploitation."
 authors = ["novafacing <rowanbhart@gmail.com>"]
 readme = "README.md"
