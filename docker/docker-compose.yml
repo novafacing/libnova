@@ -1,0 +1,586 @@
+version: '3.8'
+services:
+  afl_builder_aarch64_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-aarch64-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/aarch64_softmmu/'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_alpha_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-alpha-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/alpha_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_arm_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-arm-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/arm_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_avr_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-avr-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/avr_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_cris_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-cris-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/cris_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_hppa_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-hppa-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/hppa_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_i386_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-i386-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/i386_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_m68k_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-m68k-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/m68k_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_microblaze_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-microblaze-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/microblaze_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_microblazeel_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-microblazeel-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/microblazel_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mips_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mips-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/mips_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mips64_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mips64-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/mips64_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mips64el_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mips64el-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/mips64el_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mipsel_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mipsel-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/mipsel_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_moxie_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-moxie-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/moxie_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_nios2_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-nios2-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/nios2_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_or1k_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-or1k-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/or1k_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_ppc_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-ppc-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/ppc_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_ppc64_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-ppc64-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/ppc64_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_riscv32_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-riscv32-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/riscv32_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_riscv64_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-riscv64-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/riscv64_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_rx_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-rx-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/rx_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_s390x_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-s390x-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/s390x_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sh4_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sh4-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/sh4_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sh4eb_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sh4eb-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/sh4eb_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sparc_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sparc-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/sparc_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sparc64_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sparc64-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/sparc64_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_tricore_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-tricore-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/tricore_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_x86_64_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-x86_64-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/x86_64_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_xtensa_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-xtensa-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/xtensa_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_xtensaeb_softmmu:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-xtensaeb-softmmu
+    command: bash -c '/copyafl.sh /output/binaries/xtensab_softmmu'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_aarch64:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-aarch64
+    command: bash -c '/copyafl.sh /output/binaries/aarch64'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_aarch64_be:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-aarch64_be
+    command: bash -c '/copyafl.sh /output/binaries/aarch64_be'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_alpha:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-alpha
+    command: bash -c '/copyafl.sh /output/binaries/alpha'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_arm:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-arm
+    command: bash -c '/copyafl.sh /output/binaries/arm'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_armeb:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-armeb
+    command: bash -c '/copyafl.sh /output/binaries/armeb'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_cris:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-cris
+    command: bash -c '/copyafl.sh /output/binaries/cris'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_hexagon:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-hexagon
+    command: bash -c '/copyafl.sh /output/binaries/hexagon'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_hppa:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-hppa
+    command: bash -c '/copyafl.sh /output/binaries/hppa'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_i386:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-i386
+    command: bash -c '/copyafl.sh /output/binaries/i386'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_m68k:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-m68k
+    command: bash -c '/copyafl.sh /output/binaries/m68k'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_microblaze:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-microblaze
+    command: bash -c '/copyafl.sh /output/binaries/microblaze'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_microblazeel:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-microblazeel
+    command: bash -c '/copyafl.sh /output/binaries/microblazeel'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mips:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mips
+    command: bash -c '/copyafl.sh /output/binaries/mips'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mips64:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mips64
+    command: bash -c '/copyafl.sh /output/binaries/mips64'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mips64el:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mips64el
+    command: bash -c '/copyafl.sh /output/binaries/mips64el'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mipsel:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mipsel
+    command: bash -c '/copyafl.sh /output/binaries/mipsel'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mipsn32:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mipsn32
+    command: bash -c '/copyafl.sh /output/binaries/mipsn32'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_mipsn32el:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-mipsn32el
+    command: bash -c '/copyafl.sh /output/binaries/mipsn32el'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_nios2:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-nios2
+    command: bash -c '/copyafl.sh /output/binaries/nios2'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_or1k:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-or1k
+    command: bash -c '/copyafl.sh /output/binaries/or1k'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_ppc:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-ppc
+    command: bash -c '/copyafl.sh /output/binaries/ppc'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_ppc64:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-ppc64
+    command: bash -c '/copyafl.sh /output/binaries/ppc64'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_ppc64le:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-ppc64le
+    command: bash -c '/copyafl.sh /output/binaries/ppc64le'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_riscv32:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-riscv32
+    command: bash -c '/copyafl.sh /output/binaries/riscv32'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_riscv64:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-riscv64
+    command: bash -c '/copyafl.sh /output/binaries/riscv64'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_s390x:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-s390x
+    command: bash -c '/copyafl.sh /output/binaries/s390x'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sh4:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sh4
+    command: bash -c '/copyafl.sh /output/binaries/sh4'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sh4eb:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sh4eb
+    command: bash -c '/copyafl.sh /output/binaries/sh4eb'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sparc:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sparc
+    command: bash -c '/copyafl.sh /output/binaries/sparc'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sparc32plus:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sparc32plus
+    command: bash -c '/copyafl.sh /output/binaries/sparc32plus'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_sparc64:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-sparc64
+    command: bash -c '/copyafl.sh /output/binaries/sparc64'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_x86_64:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-x86_64
+    command: bash -c '/copyafl.sh /output/binaries/x86_64'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_xtensa:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-xtensa
+    command: bash -c '/copyafl.sh /output/binaries/xtensa'
+    volumes:
+      - ../libnova/bin/:/output/binaries/
+
+  afl_builder_xtensaeb:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfiles/AFLplusplus-builder-Dockerfile
+      target: AFLplusplus-builder-xtensaeb
+    command: bash -c '/copyafl.sh /output/binaries/xtensaeb'
+    volumes:
+      - ../libnova/bin/:/output/binaries/

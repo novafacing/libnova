@@ -21,6 +21,9 @@ pytest-cov = "^3.0.0"
 poetry = "^1.1.11"
 pre-commit = "^2.15.0"
 
+[tool.poetry.build]
+script = "build.py"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

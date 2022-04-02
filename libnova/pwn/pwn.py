@@ -6,7 +6,7 @@ Pwntools wrapper and convenience things!
 from enum import Enum
 from logging import getLogger
 from pathlib import Path
-from typing import Any, Dict, Optional, Tuple, Union, cast
+from typing import Any, Dict, List, Optional, Tuple, Union, cast
 
 from pwnlib.elf.elf import ELF
 from pwnlib.gdb import debug
@@ -14,6 +14,10 @@ from pwnlib.timeout import Timeout
 from pwnlib.tubes.process import process
 from pwnlib.tubes.remote import remote
 from pwnlib.tubes.tube import tube
+from pwnlib.util.cyclic import cyclic
+from pwnlib.elf.corefile import Corefile
+
+from libnova.util.replayable import MethodReplayable
 
 l = getLogger(__file__)
 
@@ -177,6 +181,7 @@ class PW:
         self.local_args = local_args
         self.remote_args = remote_args
         self.gdbscript = gdbscript
+        self.replay_sends: List[MethodReplayable] = []
 
         self.p, self.r = self.open_tubes()
 
@@ -299,6 +304,15 @@ class PW:
         :param timeout: The timeout to use.
         """
         self.sendlineafter(delim, data)
+        self.replay_sends.append(
+            MethodReplayable(
+                "sendlineafter",
+                (
+                    delim,
+                    data,
+                ),
+            )
+        )
 
     def sl(self, data: bytes) -> None:
         """
@@ -307,6 +321,7 @@ class PW:
         :param data: The data to send.
         """
         self.sendline(data)
+        self.replay_sends.append(MethodReplayable("sendline", (data,)))
 
     def rcv(self, numb: int) -> bytes:
         """
@@ -337,3 +352,28 @@ class PW:
         """
         b: bytes = self.recvall()
         return b
+
+    def crash(self, size: int) -> Optional[Corefile]:
+        """
+        Crash the process with a large amount of data, try to get a core, and
+        obtain offset in the input that caused the crash to construct
+        exploits.
+
+        :param size: The size of the data to crash with.
+        """
+        crashproc = process(str(self.binary.resolve()), **self.local_args)
+        for send in self.replay_sends:
+            send.replay(crashproc)
+
+        crashproc.sendline(cyclic(size))
+        crashproc.recv(timeout=1)
+        try:
+            core = crashproc.corefile
+            crashproc.close()
+        except BrokenPipeError:
+            ...
+
+        if core is None:
+            l.error(f"Failed to get core for crash of size {size}")
+
+        return core
