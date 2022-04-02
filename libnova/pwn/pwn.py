@@ -8,6 +8,7 @@ from logging import getLogger
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union, cast
 
+from pwnlib.elf.corefile import Corefile
 from pwnlib.elf.elf import ELF
 from pwnlib.gdb import debug
 from pwnlib.timeout import Timeout
@@ -15,7 +16,6 @@ from pwnlib.tubes.process import process
 from pwnlib.tubes.remote import remote
 from pwnlib.tubes.tube import tube
 from pwnlib.util.cyclic import cyclic
-from pwnlib.elf.corefile import Corefile
 
 from libnova.util.replayable import MethodReplayable
 

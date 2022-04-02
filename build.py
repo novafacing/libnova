@@ -1,6 +1,6 @@
 from pathlib import Path
-from typing import Any, List
 from subprocess import CalledProcessError, run
+from typing import Any, List
 
 BINARIES_PATH = Path(__file__).with_name("binaries")
 

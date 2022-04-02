@@ -6,7 +6,7 @@ one.
 """
 
 from dataclasses import dataclass
-from typing import Tuple, Any, Callable
+from typing import Any, Callable, Tuple
 
 
 @dataclass

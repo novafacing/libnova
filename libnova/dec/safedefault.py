@@ -10,8 +10,8 @@ assert x()[0] == 10
 ```
 """
 
+from inspect import Parameter, signature
 from typing import Callable, List, Optional
-from inspect import signature, Parameter
 
 
 def safedefault(func: Callable) -> Callable:
